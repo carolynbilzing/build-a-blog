@@ -18,8 +18,21 @@ import webapp2
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
-        self.response.write('Hello world!')
+        self.response.write('Hello darkness my old friend!')
+
+class ViewPostHandler(webapp2.RequestHandler):
+	"""docstring for ViewPostHandler"""
+	def get(self, id):
+		self.response.write( )
+		pass #replace this with some code to handle the request
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler)
 ], debug=True)
+#webapp2.Route('/blog/<id:\d+>',ViewPostHandler):
+
+
+
+		
+
+
