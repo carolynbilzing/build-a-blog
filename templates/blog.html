@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Build-a-blog</title>
+
+        <style type="text/css">
+            body {
+                background color: greenyellow;
+                font-family: sans-serif;
+                width: 800px;
+                margin: 0 auto;
+                padding: 10px;
+            }
+            h2 {
+                color: blue;
+                font-size: 24;
+                
+            }
+
+
+            .error {
+                color: red;
+            }
+
+            label {
+                display: block;
+                font-size: 20px;
+            }
+
+            input[type=text] {
+                width: 400px;
+                font-size: 20px;
+                padding: 2px;
+            }
+
+            textarea {
+                width: 400px;
+                height: 200px;
+                font-size: 17px;
+                font-family: monospace;
+            }
+
+            input[type=submit] {
+                font-size: 24px;
+            }
+
+            hr {
+                margin: 20px auto;
+            }
+
+            .art + .art {
+                margin-top: 20px;
+            }
+
+            .art-title {
+                font-weight: bold;
+                font-size: 20px;
+            }
+
+            .art-body {
+                margin: 0;
+                font-size: 17px;
+            }
+
+        </style>
+    </head>
+    <body>
+        """<a href="/blog" class="main">"""
+        <a href="/blog"/{{find story.key().id()}}      
+                        {{find title.key}} /a>
+
+<h2>Tell me your best dating story...the good...the bad...and the hilarious...</h2>
+
+<form method="post">
+
+    <label>
+        <div>What would you call it??</div>
+        <input type="text" name="title" value = "{{title}}">
+    
+    </label>
+    <label>
+        <div>Details...lots and lots of details....</div>
+        <textarea name ="story" value ="{{story}}"></textarea>
+    </label>
+
+    <div class = "error" >{{error}}</div>
+
+    <input type="submit">
+    </form>
+    <hr>
+    
+    {%for story in storys%}
+
+    <div class ="story">
+        <div class="story-title">{{story.title}}</div>
+        <pre class="story-body">{{story.story}}</pre>
+
+    {%endfor%}
+
+
+"""
+
+
+
+
+    </body>
+</html>
