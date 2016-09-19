@@ -47,16 +47,21 @@ class Handler(webapp2.RequestHandler):
         self.write(self.render_str(template, **kw))
 
 
-class ViewPostHandler(webapp2.RequestHandler):
+class ViewPostHandler(Handler):
     """docstring for ViewPostHandler"""
     def get(self, id):
         story = Story.get_by_id(int(id))
-        self.response.write(story.title)
+        self.render("post.html",p=story)
+
+
+class Post(db.Model):
+    """docstring for post"""
+    title = db.StringProperty(required=True)
 
 
 class MainPageHandler(Handler):
     def render_blog(self, title="", story="", error=""):
-        storys = db.GqlQuery("SELECT * FROM Story ORDER BY created DESC")
+        storys = db.GqlQuery("SELECT * FROM Story ORDER BY created DESC LIMIT 5")
 
         self.render("blog.html", storys=storys)
 
