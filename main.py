@@ -63,7 +63,7 @@ class MainPageHandler(Handler):
     def render_blog(self, title="", story="", error=""):
         storys = db.GqlQuery("SELECT * FROM Story ORDER BY created DESC LIMIT 5")
 
-        self.render("blog.html", storys=storys)
+        self.render("blog.html", title=title, story=story,storys=storys,error=error )
 
     def get(self):
         self.render_blog()
